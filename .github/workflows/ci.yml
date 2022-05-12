@@ -1,0 +1,10 @@
+name: Node.js Web App CI
+on: push
+
+jobs:
+  build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build .
