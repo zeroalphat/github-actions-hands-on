@@ -4,6 +4,7 @@ on: push
 jobs:
   lint_and_test:
     name: Lint and Test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -11,6 +12,7 @@ jobs:
           node-version: 14.x
       - run: npm ci
       - run: npm run lint
+      - run: npm test
   build:
     name: Docker Build
     needs: [lint_and_test]
@@ -18,3 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker build .
+
